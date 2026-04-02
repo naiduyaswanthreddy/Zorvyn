@@ -6,6 +6,15 @@ A modern React finance dashboard with animated charts, role-based access, and po
 
 - https://zorvynassignment.netlify.app/
 
+## How This Meets the Assignment Requirements
+
+- Dashboard Overview -> Implemented with summary cards + balance trend + spending breakdown
+- Transactions Section -> Full table with search, filter, sort, pagination
+- Basic Role Based UI -> Viewer/Admin toggle (affects New/Edit/Delete buttons)
+- Insights Section -> Dynamic cards on Dashboard + detailed Analytics page
+- State Management -> FinanceContext with localStorage persistence
+- Optional Enhancements -> Dark mode, animations, export CSV, full responsiveness
+
 ## Highlights
 
 - Dashboard overview with balance, income, expense summaries
@@ -93,11 +102,4 @@ When older saved transaction data exists, app keeps user data and backfills miss
 - `npm run build` production build
 - `npm run preview` preview production build
 
-## How This Meets the Assignment Requirements
 
-- Dashboard Overview -> Implemented with summary cards + balance trend + spending breakdown
-- Transactions Section -> Full table with search, filter, sort, pagination
-- Basic Role Based UI -> Viewer/Admin toggle (affects New/Edit/Delete buttons)
-- Insights Section -> Dynamic cards on Dashboard + detailed Analytics page
-- State Management -> FinanceContext with localStorage persistence
-- Optional Enhancements -> Dark mode, animations, export CSV, full responsiveness
