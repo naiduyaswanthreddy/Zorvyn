@@ -1,0 +1,90 @@
+﻿# Yaswanth Finance Dashboard
+
+A modern React finance dashboard with animated charts, role-based access, and polished transaction workflows.
+
+## Highlights
+
+- Dashboard overview with balance, income, expense summaries
+- Balance Trend chart with interactive tooltip
+- Recent Transactions with quick search/filter
+- Full Transactions page with:
+  - Styled pill search bars
+  - Custom calendar date picker (day + month view)
+  - Type filtering, sorting, CSV export
+  - Pagination fixed at **10 items per page**
+  - Total filtered transaction count beside page title
+- Analytics page with working period filters:
+  - **All Time**
+  - **3 Months**
+  - **6 Months**
+  - **1 Year**
+- Settings page with role/theme preferences and reset
+- Dark/Light theme with glassmorphism UI
+
+## Tech Stack
+
+- React 18
+- Vite 5
+- Tailwind CSS 3
+- Framer Motion
+- Recharts
+- React Router DOM
+- Lucide React
+
+## Setup
+
+```bash
+npm install
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+npm run preview
+```
+
+## Routes
+
+- `/` Dashboard
+- `/transactions` Transactions management
+- `/analytics` Analytics & trends
+- `/settings` Profile, role, theme, reset
+
+## Transactions & Pagination
+
+- Transactions are filterable by text, type, date range, and sort fields.
+- Pagination is always **10 per page**.
+- Current page auto-clamps when filters reduce result counts.
+
+## Analytics Period Behavior
+
+All period tabs are transaction-date driven (not static chart mocks):
+
+- `All Time`: all available records
+- `3 Months`: last 3 months from current date
+- `6 Months`: last 6 months
+- `1 Year`: last 12 months
+
+Cards and charts update together for the selected period.
+
+## Seed Data
+
+Mock data includes transactions across multiple months/years so pagination and analytics ranges are visibly testable.
+
+## Local Storage Behavior
+
+App state persists in localStorage:
+
+- `finance_transactions`
+- `finance_role`
+- `finance_theme`
+
+When older saved transaction data exists, app keeps user data and backfills missing seed records to preserve demo coverage for charts/pagination.
+
+## Scripts
+
+- `npm run dev` start development server
+- `npm run build` production build
+- `npm run preview` preview production build
