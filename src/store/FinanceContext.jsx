@@ -9,7 +9,7 @@ export function FinanceProvider({ children }) {
   });
 
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('finance_theme') || 'dark';
+    return localStorage.getItem('finance_theme') || 'light';
   });
 
   const [transactions, setTransactions] = useState(() => {

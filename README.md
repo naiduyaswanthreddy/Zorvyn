@@ -11,7 +11,7 @@ A modern React finance dashboard with animated charts, role-based access, and po
 - Dashboard Overview -> Implemented with summary cards + balance trend + spending breakdown
 - Transactions Section -> Full table with search, filter, sort, pagination
 - Basic Role Based UI -> Viewer/Admin toggle (affects New/Edit/Delete buttons)
-- Insights Section -> Dynamic cards on Dashboard + detailed Analytics page
+- Insights Section -> Dynamic cards in Analytics page
 - State Management -> FinanceContext with localStorage persistence
 - Optional Enhancements -> Dark mode, animations, export CSV, full responsiveness
 
@@ -19,10 +19,11 @@ A modern React finance dashboard with animated charts, role-based access, and po
 
 - Dashboard overview with balance, income, expense summaries
 - Balance Trend chart with interactive tooltip
-- Recent Transactions with quick search/filter
+- Spending Breakdown integrated on dashboard
 - Full Transactions page with:
   - Styled pill search bars
-  - Custom calendar date picker (day + month view)
+  - Custom calendar date picker (day + month + year view, clear option)
+  - Mobile-friendly compact calendar popup
   - Type filtering, sorting, CSV export
   - Pagination fixed at **10 items per page**
   - Total filtered transaction count beside page title
@@ -31,8 +32,9 @@ A modern React finance dashboard with animated charts, role-based access, and po
   - **3 Months**
   - **6 Months**
   - **1 Year**
+- Insights section available in Analytics page
 - Settings page with role/theme preferences and reset
-- Dark/Light theme with glassmorphism UI
+- Light theme default for new users (dark/light switch available)
 
 ## Tech Stack
 
@@ -101,5 +103,3 @@ When older saved transaction data exists, app keeps user data and backfills miss
 - `npm run dev` start development server
 - `npm run build` production build
 - `npm run preview` preview production build
-
-

@@ -7,6 +7,7 @@ import {
 import { useFinance } from '../store/FinanceContext';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
 import { AnalyticsSkeleton } from '../components/ui/Skeletons';
+import Insights from '../components/dashboard/Insights';
 import { TrendingDown, PiggyBank, Target, Calendar } from 'lucide-react';
 
 const COLORS = ['#10B981', '#3B82F6', '#F59E0B', '#EF4444', '#8B5CF6', '#EC4899', '#14B8A6', '#F97316'];
@@ -271,7 +272,7 @@ export default function AnalyticsPage() {
             </Card>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <Card>
               <CardHeader>
                 <CardTitle>Category Breakdown</CardTitle>
@@ -311,7 +312,7 @@ export default function AnalyticsPage() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="lg:col-span-2">
               <CardHeader>
                 <CardTitle>Top Spending Categories</CardTitle>
               </CardHeader>
@@ -354,6 +355,17 @@ export default function AnalyticsPage() {
                     <p className="text-sm">No expense data for this period</p>
                   </div>
                 )}
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="grid grid-cols-1">
+            <Card>
+              <CardHeader>
+                <CardTitle>Insights</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Insights />
               </CardContent>
             </Card>
           </div>

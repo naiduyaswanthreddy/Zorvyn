@@ -1,11 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useFinance } from '../store/FinanceContext';
 import SummaryCard from '../components/dashboard/SummaryCard';
 import BalanceChart from '../components/dashboard/BalanceChart';
 import SpendingBreakdown from '../components/dashboard/SpendingBreakdown';
-import Insights from '../components/dashboard/Insights';
-import TransactionList from '../components/transactions/TransactionList';
 import { DashboardSkeleton } from '../components/ui/Skeletons';
 import { Wallet, TrendingUp, TrendingDown, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -57,7 +55,7 @@ export default function DashboardOverview() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="space-y-8"
+          className="space-y-5"
         >
           <motion.div variants={item} className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
@@ -71,7 +69,7 @@ export default function DashboardOverview() {
             </div>
           </motion.div>
 
-          <motion.div variants={item} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <motion.div variants={item} className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <SummaryCard
               title="Total Balance"
               amount={stats.balance}
@@ -98,9 +96,9 @@ export default function DashboardOverview() {
             />
           </motion.div>
 
-          <motion.div variants={item} className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2 glass-card p-6 card-gradient-border">
-              <div className="flex items-center justify-between mb-6">
+          <motion.div variants={item} className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div className="lg:col-span-2 glass-card p-5 card-gradient-border">
+              <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-semibold text-primary">Balance Trend</h2>
                 <button
                   onClick={() => navigate('/analytics')}
@@ -112,31 +110,11 @@ export default function DashboardOverview() {
               </div>
               <BalanceChart />
             </div>
-            <div className="glass-card p-6 flex flex-col">
-              <h2 className="text-lg font-semibold mb-4 text-primary">Spending Breakdown</h2>
-              <div className="flex-1 min-h-[300px]">
+            <div className="glass-card p-5 flex flex-col">
+              <h2 className="text-lg font-semibold mb-3 text-primary">Spending Breakdown</h2>
+              <div className="flex-1 min-h-[250px]">
                 <SpendingBreakdown />
               </div>
-            </div>
-          </motion.div>
-
-          <motion.div variants={item} className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2 glass-card p-0 overflow-hidden">
-              <div className="p-6 border-b flex justify-between items-center">
-                <h2 className="text-lg font-semibold text-primary">Recent Transactions</h2>
-                <button
-                  onClick={() => navigate('/transactions')}
-                  className="flex items-center gap-1 text-xs text-muted hover:text-accent transition-colors group"
-                >
-                  View all
-                  <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-                </button>
-              </div>
-              <TransactionList limit={5} />
-            </div>
-            <div className="glass-card p-6">
-              <h2 className="text-lg font-semibold mb-4 text-primary">Insights</h2>
-              <Insights />
             </div>
           </motion.div>
         </motion.div>

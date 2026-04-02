@@ -155,6 +155,7 @@ export default function TransactionsPage() {
                   onChange={(nextDate) => { setDateRange({ ...dateRange, start: nextDate }); setCurrentPage(1); }}
                   placeholder="Start date"
                   className="w-40"
+                  size="sm"
                 />
                 <span className="text-muted text-xs font-medium">to</span>
                 <DatePicker
@@ -162,24 +163,27 @@ export default function TransactionsPage() {
                   onChange={(nextDate) => { setDateRange({ ...dateRange, end: nextDate }); setCurrentPage(1); }}
                   placeholder="End date"
                   className="w-40"
+                  size="sm"
                 />
               </div>
             </div>
           </div>
 
-          <div className="flex sm:hidden gap-3 mt-3">
+          <div className="sm:hidden mt-3 space-y-2">
             <DatePicker
               value={dateRange.start}
               onChange={(nextDate) => { setDateRange({ ...dateRange, start: nextDate }); setCurrentPage(1); }}
               placeholder="Start date"
-              className="flex-1"
+              size="sm"
+              className="w-full"
             />
-            <span className="text-muted text-xs font-medium self-center">to</span>
+            <span className="block text-muted text-[11px] font-medium px-1">to</span>
             <DatePicker
               value={dateRange.end}
               onChange={(nextDate) => { setDateRange({ ...dateRange, end: nextDate }); setCurrentPage(1); }}
               placeholder="End date"
-              className="flex-1"
+              size="sm"
+              className="w-full"
             />
           </div>
         </div>

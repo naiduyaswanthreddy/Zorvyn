@@ -3,6 +3,7 @@ import { useFinance } from '../../store/FinanceContext';
 import Modal from '../ui/Modal';
 import Button from '../ui/Button';
 import Dropdown from '../ui/Dropdown';
+import DatePicker from '../ui/DatePicker';
 
 export default function TransactionModal({ isOpen, onClose, editingTransaction }) {
   const { addTransaction, updateTransaction } = useFinance();
@@ -36,7 +37,7 @@ export default function TransactionModal({ isOpen, onClose, editingTransaction }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.description || !formData.amount || !formData.category) return;
+    if (!formData.description || !formData.amount || !formData.category || !formData.date) return;
 
     const data = { ...formData, amount: parseFloat(formData.amount) };
 
@@ -127,13 +128,11 @@ export default function TransactionModal({ isOpen, onClose, editingTransaction }
 
         <div>
           <label className="block text-sm font-medium text-secondary mb-2">Date</label>
-          <input
-            required
-            type="date"
-            className="w-full rounded-xl px-3.5 py-2.5 text-sm text-primary outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all"
-            style={{ background: 'hsl(var(--input-bg))', border: '1px solid hsl(var(--input-border))' }}
+          <DatePicker
             value={formData.date}
-            onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+            onChange={(val) => setFormData({ ...formData, date: val })}
+            placeholder="Select transaction date"
+            size="sm"
           />
         </div>
 

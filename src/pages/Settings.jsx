@@ -4,6 +4,7 @@ import { useFinance } from '../store/FinanceContext';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import { Badge } from '../components/ui/Badge';
+import Modal from '../components/ui/Modal';
 import { SettingsSkeleton } from '../components/ui/Skeletons';
 import {
   User, Shield, Palette, Database, RotateCcw,
@@ -19,11 +20,17 @@ const pageVariants = {
 export default function SettingsPage() {
   const { role, setRole, theme, setTheme, resetData, stats } = useFinance();
   const [isLoading, setIsLoading] = useState(true);
+  const [isResetConfirmOpen, setIsResetConfirmOpen] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 600);
     return () => clearTimeout(timer);
   }, []);
+
+  const handleConfirmReset = () => {
+    resetData();
+    setIsResetConfirmOpen(false);
+  };
 
   return (
     <AnimatePresence mode="wait">
@@ -227,13 +234,35 @@ export default function SettingsPage() {
               <p className="text-sm font-medium text-primary">Reset to Defaults</p>
               <p className="text-xs text-secondary mt-1">Restore all transactions and settings to initial state</p>
             </div>
-            <Button variant="danger" size="sm" onClick={resetData}>
+            <Button variant="danger" size="sm" onClick={() => setIsResetConfirmOpen(true)}>
               <RotateCcw className="w-4 h-4" />
               Reset
             </Button>
           </div>
         </CardContent>
       </Card>
+
+      <Modal
+        isOpen={isResetConfirmOpen}
+        onClose={() => setIsResetConfirmOpen(false)}
+        title="Confirm Data Reset"
+        className="max-w-md"
+      >
+        <div className="p-5 space-y-5">
+          <p className="text-sm text-secondary leading-relaxed">
+            This will restore all transactions and settings to their default values. This action cannot be undone.
+          </p>
+          <div className="flex items-center justify-end gap-3">
+            <Button variant="ghost" onClick={() => setIsResetConfirmOpen(false)}>
+              Cancel
+            </Button>
+            <Button variant="danger-solid" onClick={handleConfirmReset}>
+              <RotateCcw className="w-4 h-4" />
+              Yes, Reset
+            </Button>
+          </div>
+        </div>
+      </Modal>
 
       <div className="text-center py-8 border-t">
         <p className="text-sm text-muted">Yaswanth Finance Dashboard v1.0</p>
